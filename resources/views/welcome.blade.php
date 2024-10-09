@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="{{ asset('resources/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
 </head>
 <body>
 <div style="background-color:#1B1529;">
@@ -18,7 +19,7 @@
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-            <img src="{{ asset('img/Logo.svg') }}" alt="Capital Logo" class="navbar-logo">
+            <img src="{{ asset('images/Logo.svg') }}" alt="Capital Logo" class="navbar-logo">
             <ul class="navbar-nav" id="navbar-items">
                 <li class="dropdown">
                     <a href="#"><span>Investment Services</span></a>
