@@ -1,8 +1,15 @@
-@extends('layouts.app')
-
-@section('title', 'Capital International Group')
-
-@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capital International Group</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="{{ asset('resources/css/app.css') }}">
+</head>
+<body>
 <div style="background-color:#1B1529;">
     <nav class="navbar">
         <div class="navbar-container">
@@ -16,24 +23,24 @@
                 <li class="dropdown">
                     <a href="#"><span>Investment Services</span></a>
                     <div class="dropdown-content">
-                        <ul>
-                            <li><a href="#">Investment Platform</a></li>
-                            <li><a href="#">Investment Management</a></li>
-                        </ul>
+                      <ul>
+                        <li><a href="#">Investment Platform</a></li>
+                        <li><a href="#">Investment Management</a></li>
+                      </ul>
                     </div>
                 </li>
                 <li><a href="#">Investment Management</a></li>
                 <li><a href="#">Banking</a></li>
                 <li class="dropdown">
-                    <a href="#"><span>Company</span></a>
-                    <div class="dropdown-content">
-                        <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Conscious Capital</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                        </ul>
-                    </div>
+                  <a href="#"><span>Company</span></a>
+                  <div class="dropdown-content">
+                    <ul>
+                      <li><a href="#">About Us</a></li>
+                      <li><a href="#">Careers</a></li>
+                      <li><a href="#">Conscious Capital</a></li>
+                      <li><a href="#">Contact Us</a></li>
+                    </ul>
+                  </div>
                 </li>
             </ul>
             
@@ -56,6 +63,7 @@
         <div class="message">
             <p>We recently published our 2023 Conscious Capital Sustainability Report.</p>
             <p>Click <a href="#">here</a> to access it.</p>
+            <!-- Cancel (Close) icon -->
             <span id="closePopup" class="close">&times;</span>
         </div>
     </div>
@@ -105,7 +113,7 @@
                 <div class="footer-column">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="#">Investment </a></li>
+                        <li><a href="#">Investment</a></li>
                         <li><a href="#">Platform</a></li>
                         <li><a href="#">Investment</a></li>
                         <li><a href="#">Management</a></li>
@@ -138,10 +146,11 @@
         </div>
     </footer>
 
-    <script src="{{ asset('scripts/script.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();
     </script>
 </div>
-@endsection
+</body>
+</html>
