@@ -3,40 +3,71 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth; // Add this import
 use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function showLoginForm()
+    // Show signup form
+    public function showSignupForm()
     {
-        return view('auth.login'); // Returning the login form view
+        return view('auth.signup');
     }
 
-    public function login(Request $request)
+    // Handle signup form submission
+    public function signup(Request $request)
     {
-        // Validate input fields
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string',
+        // Validation rules
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Get credentials
-        $credentials = $request->only('email', 'password');
+        // Create new user
+        User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']), // Hash password
+        ]);
 
-        // Attempt login using Laravel Auth
-        if (Auth::attempt($credentials)) {
-            // Redirect to intended page or user home
-            return redirect()->intended('user-home');
-        }
-
-        // If login fails, redirect back with an error
-        return back()->withErrors(['email' => 'Email or password is incorrect.']);
+        // Redirect to login page after successful signup
+        return redirect()->route('login')->with('success', 'Account created successfully! Please login.');
     }
 
-    public function logout()
+    // Show the login form
+    public function showLoginForm()
     {
-        Auth::logout();
-        return redirect('/login');
+        return view('auth.login');
+    }
+
+    // Handle login logic
+    public function login(Request $request)
+    {
+        $user = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        // Find the user by email
+        $user = User::where('email', $request->email)->first();
+
+        // Check if user exists and the password matches
+        if ($user && Hash::check($request->password, $user->password)) {
+            // Use Laravel's Auth system
+            Auth::login($user);
+
+            return redirect()->route('user.home');
+        }
+
+        // If credentials don't match, return with an error
+        return back()->with('error', 'Invalid email or password');
+    }
+    public function userHome()
+    {
+        $user = Auth::user(); // Get the authenticated user
+        return view('user_home', compact('user')); // Pass user data to the view
     }
 }
